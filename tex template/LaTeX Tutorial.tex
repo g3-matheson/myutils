@@ -1,0 +1,409 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[hmargin = 2cm, vmargin = 2cm]{geometry}
+\usepackage{hyperref} % allows you to have URLs
+\usepackage{graphicx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    % you could theoretically write notes that refer to themselves as links
+    filecolor=magenta, 
+    urlcolor=blue,
+}
+
+%%% optional packages, 
+%% based on what is needed in the document
+%% they are all covered below.
+\usepackage{enumerate}
+
+% author's signature
+\raggedbottom
+
+% never understood the point of these, but you can put them in if you want
+\setlength{\parindent}{0pt}  % paragraph indentation
+\setlength{\parskip}{0pt}    % space between paragraphs
+
+% pretty math letters
+\newcommand{\bR}{\mathbb{R}} % real numbers
+\newcommand{\bQ}{\mathbb{Q}} % rationals
+\newcommand{\bQc}{\mathbb{Q}^c} % irrationals
+\newcommand{\bN}{\mathbb{N}} % natural numbers (1,2,3....)
+\newcommand{\bNo}{\mathbb{N}_0} % (0,1,2,..) \bNo \st o:char
+\newcommand{\bZ}{\mathbb{Z}} % integers
+\newcommand{\bP}{\mathbb{P}} % probability
+\newcommand{\bE}{\mathbb{E}} % expectation
+\newcommand{\cA}{\mathcal{A}} % pretty A for set of sets
+\newcommand{\cS}{\mathcal{S}} % support
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cO}{\mathcal{O}}
+
+\newcommand{\xstar}{x^{\star}}
+% add your own if you want, i this is already quite a list
+
+% fancy proof ending
+\newcommand{\qed}{\hfill $\blacksquare$}
+
+% declare words in $math$ that look nice
+\DeclareMathOperator{\var}{Var} 
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+
+% auto-sizing brackets
+% use inside math environments only
+% if only text needed, use $\bp{\text{...}}$ 
+\newcommand{\bp}[1]{\left( #1 \right)}
+\newcommand{\bb}[1]{\left[ #1 \right]}
+\newcommand{\bc}[1]{\left\{ #1 \right \}}
+\newcommand{\ba}[1]{\left| #1 \right|}
+\newcommand{\baa}[1]{\left|| #1 \right||}
+\newcommand{\baainf}[1]{\baa{#1}_{\infty}}
+
+
+% use these to make the .pdf background darker or another color
+% look at docs for colors or make your own:
+% \definecolor{string name}{RGB}{int r,b,g in [0,255]}
+\usepackage{xcolor}
+\pagecolor{black} %% background
+\color{gray} %% font
+
+%%%% algoritms packages
+\usepackage{algorithm}
+% [noend] gets rid of lines like "end function"
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\textproc{} % function names not capslock
+\renewcommand{\thealgorithm}{} % removes algo numbering
+% for each command (\ForEach --> \EndFor)
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+\usepackage{fancyvrb}
+
+%% Figure example
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{Q2a.png}
+%\end{figure}
+
+
+
+%%%%% 
+\begin{document} \pagestyle{empty}
+
+\begin{flushright}
+Your name here
+\\
+Your student ID or \# here
+\end{flushright}
+
+\vspace{12pt}
+
+\begin{center}
+\textbf{\Large{Course Code 123: Assignment $\mathbf{n}$}}
+\end{center}
+
+\vspace{24pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%delete-me
+
+This .tex \LaTeX \ file is the learning version, prepared by Kat Matheson.
+
+Any questions should be directed to \texttt{g3.matheson@gmail.com}
+
+$\ $
+
+If you lost the template, simply delete everything below the comment \emph{\%\%delete-me} and save your own.
+
+Make sure to keep the $\backslash$end\{document\} line, though or it might go on forever.
+
+\newpage % let's go to the next page
+
+\tableofcontents % this will show \section{} and \subsection{}
+		 % you can use \section*{} if you don't want them numbered
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% LaTeX %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\LaTeX} \noindent
+
+%%%% LaTeX basics
+\LaTeX \ has odd spacing.
+
+if you write a line
+and continue on the next one, you might notice a problem
+
+if you write a line and something else \\
+and continue on the next one, you might notice it's fixed, sort of? \\
+what if...
+hmmmmm
+
+now?
+
+
+
+
+
+
+
+
+how about now?
+
+
+
+
+
+
+
+
+
+
+
+where are my spaces?
+
+i guess i only need one...
+
+
+%% vertical spacing
+\vspace{60pt} 
+
+i could do this though
+
+%% centering
+\begin{center}
+i can write in the middle
+\end{center}
+
+\begin{flushright}
+or over here to write my name and student ID in the top right corner
+\end{flushright}
+
+% \textbf{string s}
+this is normal text, \textbf{but this is bolded.}
+
+% \textit{} or \emph{}
+this is normal text, \textit{this is italicized}, and \emph{this is emphasized}
+
+
+\vspace{36pt}
+
+% \texttt{} 
+this is normal text, \texttt{and this is cool math-ish pc-looking text}
+
+% sizing
+{\large this is large} 
+{\Large this is Large}
+{\small or you can be small}
+{\tiny or even tiny}
+
+\vspace{1in}
+
+
+%% Spacing
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% horizontal spacing
+% in pt (points/pixels? not sure tbh)
+\hspace{200pt} over here
+
+
+% or inches:
+\hspace{2in} weeeeeeeeeeeeeeee
+
+% causes the error below of "Overfull \hbox":
+\hspace{7in} weeeeeeeeeeeeeeee
+
+% for some reason this one isn't an error...
+\hspace{-1.5in} weeeeeeeeeeeeeeee
+
+
+	% the re-sizing is based on the math engine, but it can
+	% also tell what height your letters are.
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Math} \noindent
+
+% math environment is inside of ${...}$
+a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+
+1,2,3,4,5,6,7,8,9,0
+
+$a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z$
+
+$1,2,3,4,5,6,7,8,9,0$ % notice spacing is automatic
+
+%% math environment can also be centered/emphasized with $$
+\[ a,b,c = 1,2,3 = \sum_{i=1}^j \int_0^{\infty} e^{ix} \ dx \]
+
+$\ $ % math spacer, just takes up an (almost) empty line
+		 % for when you're too lazy to type \vspace{12pt}
+
+% greek letters for variables
+\texttt{greek letters for variables}
+
+$\alpha, \beta, \gamma, \sigma, \theta, \epsilon, \varepsilon$
+
+$\ $
+
+% math symbols
+\texttt{math symbols}
+
+$\sum_{i=1}^n$, $\prod_{i=1}^n$, $\bigcap_{i=1}^n$, $\bigcup_{i=1}^n$
+
+$a+b$, $a-b$, $a \pm b$
+
+$\frac{a}{b}, a/b$
+
+$a > b, a \geq b, a < b, a \leq b$
+
+$a \ne b, a \sim b, a \approx b, a \simeq b$
+
+$a \cdot b, a \times b, a * b$
+
+% pay attention to subscripts!
+% they must be in {} if they're not just 1 character
+$a^b, a^{2b}, a^2b$
+
+$a_b, a_{2b}, a_2b$ 
+
+$A \cup B, A \cap B, A \setminus B$
+
+$A \subset B, A \subseteq B, A \supset B, A \supseteq B$
+
+$\in, \notin$
+
+$\forall$, $\exists$, $\implies$, $\impliedby$, $\iff$
+
+$a \land b, a \lor b$
+
+$\bP(a+b) < \bE(c \pm d)$
+
+$x \in \bN, y \in \bR, z \notin Z, \alpha \in \bQ\setminus(\bN \cap \bQc)$
+
+and so on $\cdots$
+
+and so on $\ldots$
+
+$\ $
+
+% math functions
+\texttt{math functions}
+
+$\sin(x), \cos^2(x), \tan(\theta)$
+
+$e^{x_i^2}, \log_2(x)$
+
+\[ f^{\prime\prime} = f^{(2)} = \frac{d^2 f}{dx^2} \ne \frac{\partial^2 f}{\partial x \partial y} \]
+
+$\ $
+
+% math auto-sizing brackets
+\texttt{math auto-sizing brackets}
+
+$\bp{2+2}$
+
+$\bb{\bp{2+\frac{1}{2}}}$
+
+$\bc{\bp{\bp{2 + 2}} > \bigcap_{i=1}^n \frac{\sum_{i=1}^n \bp{i +1}^2}{\theta_1}}$
+
+\[ \bp{1 + \bigcap_{i=1}^n \frac{\sum_{i=1}^n \bp{i +1}^2}{\theta_1}} \]
+
+\newpage
+
+% math comments
+\texttt{math comments}
+\[ a = b \text{ because science} \]
+\[ and d = e \ \text{because} \]
+\[ b = c \hspace{2in} \text{according to my mom} \]
+
+% align environment
+\begin{align*}
+x &= y \\
+&\sim \theta - 3 \ \text{and some other text} \\
+&= z + 1 \quad \text{and some other text} \\
+&< z + 3 \qquad \text{and some other text}
+\end{align*}
+
+% multiple-align environment
+\begin{align*}
+x &= 2 & i &= 1 \\
+x &= 3 & i &= 2
+\end{align*}
+
+% matrices
+\texttt{matrices}
+\[
+\begin{bmatrix}
+    0,1,2 \\
+    3,4,5 \\
+    6,7,8 
+\end{bmatrix}
+\begin{pmatrix}
+    0,1,2 \\
+    3,4,5 \\
+    6,7,8
+    \end{pmatrix}
+\]
+
+% cases
+\texttt{cases}
+\[
+f(x) = \begin{cases}
+    \frac{1}{2} &\text{if } x > 0 \\
+    \theta_0    &\text{if } x = 0 \\
+    0           &\text{otherwise}
+\end{cases}
+\]
+
+\newpage
+\begin{center}
+\texttt{Examples}
+
+\tiny{common mistakes were made on purpose, to show what they do, and why certain things are useful}
+\end{center}
+\begin{enumerate}[(1)]
+    \item $\sum_{i=0,i\ne k}^{n-1} x_i^2$
+    % the same function but in \[ \] instead of $ $, indices go to top and bottom
+    \item \[\sum_{i=0,i\ne k}^{n-1} x_i^2\]
+    \item $\sum_{i=1}^n \frac{x_i+y_i}{{2^i}^{i-1}}$
+    \item $\prod_{i=1}^n \bp{\frac{x_i+y_i}{2^i}}^{i-1}$
+    \item $\frac{\sum_{i=1}^n x_i}{n}$
+    \item $\frac{\int_0^1 \frac{a}{x^{-2}} \ dx}{2}$
+\end{enumerate}
+
+
+
+
+\newpage
+
+%%%% to be continued...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% Algorithms %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithms} \noindent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% Algorithms %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithms} \noindent
+
+
+
+
+\end{document}
