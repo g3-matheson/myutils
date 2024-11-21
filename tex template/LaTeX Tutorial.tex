@@ -93,6 +93,9 @@
 %    \includegraphics[width=0.7\textwidth]{Q2a.png}
 %\end{figure}
 
+\usepackage{tikz}
+
+
 
 
 %%%%% 
@@ -399,11 +402,28 @@ f(x) = \begin{cases}
 \section{Algorithms} \noindent
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%% Algorithms %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Trees %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Algorithms} \noindent
+\section{Trees} \noindent
 
+\hyperlink{https://tikz.dev/tikz-trees}{more on drawing trees (here)} (this is a hyperlink, it will open the default browser from a pdf click)
 
+see the .tex file for how to draw the tree
+
+\begin{center}
+    \begin{tikzpicture}                     % 'levels' = depth
+    [level distance = 10mm,                     % distance between parents and children
+     level 1/.style={sibling distance=30mm},    % adjust as necessary to make space
+     level 2/.style={sibling distance=15mm}]    % add more levels if needed
+        \node {A}
+            child 
+            {node {B}
+                    child {node {D}}
+                    child {node {E}}}
+            child 
+            {node {C}};
+    \end{tikzpicture}
+    \end{center}
 
 
 \end{document}
