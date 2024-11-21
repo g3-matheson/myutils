@@ -285,6 +285,17 @@ apf apf::norm2(const std::pair<apf,apf>& x)
     return result;
 }
 
+/*
+    if x = m * 10^e, m \in [0,1]
+        e in [-1022,1023]
+    max accuracy: 2^{-53} ~ 10^{-16}
+*/
+double apf::trim(const apf& x)
+{
+    return mpf_get_d(x.value);
+
+}
+
 std::ostream& operator<<(std::ostream& os, const apf& f)
 {
     // https://gmplib.org/manual/Converting-Floats#index-mpf_005fget_005fstr

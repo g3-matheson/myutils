@@ -75,6 +75,8 @@ class apf
     static apf sqrt(const apf& x);
     static apf norm2(const std::pair<apf,apf>& x);
 
+    static double trim(const apf& x);
+
     friend std::ostream& operator<<(std::ostream& os, const apf& f);
 
 };
