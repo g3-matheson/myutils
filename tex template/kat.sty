@@ -1,0 +1,102 @@
+% 
+% you can change the name to whatever you want
+%
+%
+% here
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kat}[2024/11/21]
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[hmargin = 2cm, vmargin = 2cm]{geometry}
+\usepackage{hyperref} % allows you to have URLs
+\usepackage{graphicx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    % you could theoretically write notes that refer to themselves as links
+    filecolor=magenta, 
+    urlcolor=blue,
+}
+
+%%% optional packages, 
+%% based on what is needed in the document
+%% they are all covered below.
+\usepackage{enumerate}
+
+% author's signature
+\raggedbottom
+
+% never understood the point of these, but you can put them in if you want
+\setlength{\parindent}{0pt}  % paragraph indentation
+\setlength{\parskip}{0pt}    % space between paragraphs
+
+% pretty math letters
+\newcommand{\bR}{\mathbb{R}} % real numbers
+\newcommand{\bQ}{\mathbb{Q}} % rationals
+\newcommand{\bQc}{\mathbb{Q}^c} % irrationals
+\newcommand{\bN}{\mathbb{N}} % natural numbers (1,2,3....)
+\newcommand{\bNo}{\mathbb{N}_0} % (0,1,2,..) \bNo \st o:char
+\newcommand{\bZ}{\mathbb{Z}} % integers
+\newcommand{\bP}{\mathbb{P}} % probability
+\newcommand{\bE}{\mathbb{E}} % expectation
+\newcommand{\cA}{\mathcal{A}} % pretty A for set of sets
+\newcommand{\cS}{\mathcal{S}} % support
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cO}{\mathcal{O}}
+
+\newcommand{\xstar}{x^{\star}}
+% add your own if you want, i this is already quite a list
+
+% fancy proof ending
+\newcommand{\qed}{\hfill $\blacksquare$}
+
+% declare words in $math$ that look nice
+\DeclareMathOperator{\var}{Var} 
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+
+% auto-sizing brackets
+% use inside math environments only
+% if only text needed, use $\bp{\text{...}}$ 
+\newcommand{\bp}[1]{\left( #1 \right)}
+\newcommand{\bb}[1]{\left[ #1 \right]}
+\newcommand{\bc}[1]{\left\{ #1 \right \}}
+\newcommand{\ba}[1]{\left| #1 \right|}
+\newcommand{\baa}[1]{\left|| #1 \right||}
+\newcommand{\baainf}[1]{\baa{#1}_{\infty}}
+
+
+% use these to make the .pdf background darker or another color
+% look at docs for colors or make your own:
+% \definecolor{string name}{RGB}{int r,b,g in [0,255]}
+\usepackage{xcolor}
+\pagecolor{black} %% background
+\color{gray} %% font
+
+%%%% algoritms packages
+\usepackage{algorithm}
+% [noend] gets rid of lines like "end function"
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\textproc{} % function names not capslock
+\renewcommand{\thealgorithm}{} % removes algo numbering
+% for each command (\ForEach --> \EndFor)
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+\usepackage{fancyvrb}
+
+%% Figure example
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{Q2a.png}
+%\end{figure}
+
+\usepackage{tikz}
