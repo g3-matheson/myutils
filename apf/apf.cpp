@@ -67,6 +67,13 @@ apf& apf::operator=(const double& d)
     return *this;
 }
 
+// maps to unsigned long after abs()
+apf& apf::operator=(const int& i)
+{
+    mpf_set_ui(value, static_cast<unsigned long>(std::abs(i)));
+    return *this;
+}
+
 apf& apf::operator=(const unsigned long& l)
 {
     mpf_set_ui(value, l);
@@ -105,6 +112,14 @@ apf apf::operator+(const double& d) const
     return result;
 }
 
+apf apf::operator+(const int& i) const
+{
+    apf result;
+    mpf_set_d(result.value, static_cast<double>(i));
+    mpf_add(result.value, result.value, value);
+    return result;
+}
+
 apf apf::operator+(const unsigned long& i) const
 {
     apf result;
@@ -127,6 +142,14 @@ apf apf::operator-(const double& d) const
     return result;
 }
 
+apf apf::operator-(const int& i) const
+{
+    apf result;
+    mpf_set_d(result.value, static_cast<double>(i));
+    mpf_sub(result.value, value, result.value);
+    return result;
+}
+
 apf apf::operator-(const unsigned long& i) const
 {
     apf result;
@@ -142,6 +165,12 @@ bool apf::operator<(const double& d) const
 {
     return mpf_cmp_d(value, d) < 0;
 }
+bool apf::operator<(const int& i) const
+{
+    mpz_t iz;
+    mpz_set_si(iz, i);
+    return mpf_cmp_z(value, iz) < 0;
+}
 bool apf::operator<(const unsigned long& i) const
 {
     return mpf_cmp_ui(value, i) < 0;
@@ -154,6 +183,12 @@ bool apf::operator>(const apf& other) const
 bool apf::operator>(const double& d) const
 {
     return mpf_cmp_d(value, d) > 0;
+}
+bool apf::operator>(const int& i) const
+{
+    mpz_t iz;
+    mpz_set_si(iz, i);
+    return mpf_cmp_z(value, iz) > 0;
 }
 bool apf::operator>(const unsigned long& i) const
 {
