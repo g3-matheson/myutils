@@ -2,9 +2,9 @@
 % you can change the name to whatever you want
 %
 %
-% here
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kat}[2024/11/21]
+% % % % % % % % % % % % % %
+\NeedsTeXFormat{LaTeX2e}  % % % % %
+\ProvidesPackage{kat}[2024/11/21] % here
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -78,8 +78,21 @@
 % look at docs for colors or make your own:
 % \definecolor{string name}{RGB}{int r,b,g in [0,255]}
 \usepackage{xcolor}
-\pagecolor{black} %% background
-\color{gray} %% font
+\definecolor{charcoal}{RGB}{1, 3, 2}
+\definecolor{paper}{RGB}{212, 212, 203}
+\definecolor{forest}{RGB}{6, 26, 2}
+\definecolor{strawberry}{RGB}{232, 70, 70}
+\definecolor{tinged}{RGB}{247, 244, 240}
+\definecolor{myblue}{RGB}{33, 97, 217}
+\definecolor{mygreen}{RGB}{16, 133, 47}
+
+\newcommand{\tred}[1]{\textcolor{strawberry}{#1}}
+\newcommand{\tgreen}[1]{\textcolor{mygreen}{#1}}
+\newcommand{\tblue}[1]{\textcolor{myblue}{#1}}
+
+\newcommand{\mypagecolor}{charcoal}
+\pagecolor{charcoal} %% background
+\color{tinged} %% font
 
 %%%% algoritms packages
 \usepackage{algorithm}
@@ -100,3 +113,66 @@
 %\end{figure}
 
 \usepackage{tikz}
+% Tree example
+% \begin{tikzpicture}
+%     [level distance = 10mm,
+%      level 1/.style={sibling distance=30mm},
+%      level 2/.style={sibling distance=15mm}]
+%         \node {K}
+%             child {node {H}
+%                         child {node {X}}
+%                         child {node {C}}        
+%             }
+%             child {node {R}
+%                 child{node {Q}
+%                                 child{node {M}
+%                                     child{node {A}
+%                                         child{node {Y}}
+%                                         child{node {S}}
+%                                     }
+%                                     child{node {W}}}
+%                                 child{node{D}}}
+%                             child{node {L}}
+%             };
+% \end{tikzpicture}
+
+% Graph (and array) example
+% \begin{figure}[h!] \centering
+%     \begin{minipage}[h!]{0.5\textwidth} \centering
+%         \begin{tikzpicture}[main/.style = {draw, circle}, node distance = {16mm}]
+%             \node[main, fill=strawberry, draw=\mypagecolor] (1) {$N$};
+%             \node[main] (2) [above left of=1] {$A$};
+%             \node[main] (3) [below left of=2] {$W$};
+%             \node[main] (4) [right of=1] {$D$};
+%             \node[main] (5) [below of=1] {$T$};
+%             \node[main] (6) [above right of=4] {$E$};
+%             \node[main] (7) [below right of=6] {$M$};
+%             \node[main] (8) [above right of=7] {$K$};
+
+%             \draw (1) -- node[midway, above, sloped] {8} (2);
+%             \draw (1) -- node[midway, above, sloped] {3} (3);
+%             \draw (1) -- node[midway, above, sloped] {1} (4);
+%             \draw (2) -- node[midway, above, sloped] {2} (3);
+%             \draw (3) -- node[midway, above, sloped] {5} (5);
+%             \draw (2) -- node[midway, above, sloped] {4} (6);
+%             \draw (4) -- node[midway, above, sloped] {4} (7);
+%             \draw (5) -- node[midway, above, sloped] {2} (7);
+%             \draw (6) -- node[midway, above, sloped] {3} (7);
+%             \draw (6) -- node[midway, above, sloped] {7} (8);
+%             \draw (7) -- node[midway, above, sloped] {9} (8);
+%         \end{tikzpicture}
+%     \end{minipage}
+%     \begin{minipage}[h!]{0.45\textwidth} \centering
+%     $\begin{array}{|c|c|}
+%         \texttt{Node} & \texttt{distance} \\
+%         \hline
+%         \texttt{D} & \infty \\
+%         \texttt{W} & \infty \\
+%         \texttt{A} & \infty \\
+%         \texttt{M} & \infty \\
+%         \texttt{T} & \infty \\
+%         \texttt{E} & \infty \\
+%         \texttt{K} & \infty
+%     \end{array}$
+%     \end{minipage} 
+% \end{figure}
