@@ -67,10 +67,9 @@ apf& apf::operator=(const double& d)
     return *this;
 }
 
-// maps to unsigned long after abs()
 apf& apf::operator=(const int& i)
 {
-    mpf_set_ui(value, static_cast<unsigned long>(std::abs(i)));
+    mpf_set_d(value, static_cast<double>(i));
     return *this;
 }
 
