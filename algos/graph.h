@@ -35,12 +35,12 @@ public:
     Graph();
     ~Graph();
     
-    Node<N> addNode(const Node<N>& n, bool refreshAjd = false);
+    Node<N> addNode(const Node<N>& n, bool rebuildGraph = false);
     Node<N> removeNode(const Node<N>& n);
     Node<N> getNode(Node<N> n);
     Node<N> getNode(N n, bool (*comparator)(const N&, const N&));
 
-    Edge<N,D> addEdge(Edge<N,E> e, refreshAdj = false);
+    Edge<N,D> addEdge(Edge<N,E> e, bool rebuildGraph = false);
     Edge<N,D> removeEdge(Edge<N,E> e);
     Edge<N,D> removeEdge(E e, bool (*comparator)(const E&, const E&))
 
