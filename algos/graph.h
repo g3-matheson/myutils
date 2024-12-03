@@ -36,13 +36,13 @@ public:
     ~Graph();
     
     Node<N> addNode(const Node<N>& n, bool rebuildGraph = false);
-    Node<N> removeNode(const Node<N>& n);
-    Node<N> getNode(Node<N> n);
-    Node<N> getNode(N n, bool (*comparator)(const N&, const N&));
+    Node<N> removeNode(const Node<N>& n, bool rebuildGraph = false);
+    Node<N> removeNode(const N& n, bool (*comparator)(const N&, const N&), bool rebuildGraph = false);
+    Node<N> getNode(const N& n, bool (*comparator)(const N&, const N&));
 
-    Edge<N,D> addEdge(Edge<N,E> e, bool rebuildGraph = false);
-    Edge<N,D> removeEdge(Edge<N,E> e);
-    Edge<N,D> removeEdge(E e, bool (*comparator)(const E&, const E&))
+    Edge<N,E> addEdge(const Edge<N,E>& e, bool rebuildGraph = false);
+    Edge<N,E> removeEdge(const Edge<N,E>& e, bool rebuildGraph = false);
+    Edge<N,E> removeEdge(const E& e, bool (*comparator)(const E&, const E&), bool rebuildGraph = false);
 
     void buildGraph();
 
@@ -63,8 +63,8 @@ public:
     Node<N>* removeNode(Node<N>* n);
     Node<N>* getNode(int i);
 
-    Edge<N,D>* addEdge(Edge<N,E> e, rebuildGraph = false);
-    Edge<N,D> removeEdge(Edge<N,E>* e)
+    Edge<N,E>* addEdge(Edge<N,E>* e, rebuildGraph = false);
+    Edge<N,E> removeEdge(Edge<N,E>* e)
 
     void buildGraph();
 
