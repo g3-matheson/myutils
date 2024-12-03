@@ -59,11 +59,11 @@ public:
     PointerGraph();
     ~PointerGraph();
     
-    Node<N>* addNode(Node<N>* n, bool refreshAjd = false);
+    Node<N>* addNode(Node<N>* n, bool rebuildGraph = false);
     Node<N>* removeNode(Node<N>* n);
     Node<N>* getNode(int i);
 
-    Edge<N,D>* addEdge(Edge<N,E> e, refreshAdj = false);
+    Edge<N,D>* addEdge(Edge<N,E> e, rebuildGraph = false);
     Edge<N,D> removeEdge(Edge<N,E>* e)
 
     void buildGraph();
