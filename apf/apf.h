@@ -28,6 +28,8 @@ class apf
     apf(const apf& other);
     ~apf();
 
+    bool operator==(const apf& other);
+
     apf& operator=(const apf& other);
     apf& operator=(const mpf_t& f);    
     apf& operator=(const double& d);
@@ -85,7 +87,18 @@ class apf
     static double trim(const apf& x);
 
     friend std::ostream& operator<<(std::ostream& os, const apf& f);
+    
 
+
+};
+
+namespace std
+{
+    template <>
+    struct hash<apf> 
+    {
+        size_t operator()(const apf& a) const;
+    };
 };
 
 #endif

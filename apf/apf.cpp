@@ -46,6 +46,11 @@ apf::~apf()
     mpf_clear(value);
 }
 
+bool apf::operator==(const apf& other)
+{
+    return isZero(apf::abs(*this - other));
+}
+
 apf& apf::operator=(const apf& other)
 {
     if(this != &other)
@@ -335,4 +340,19 @@ std::ostream& operator<<(std::ostream& os, const apf& f)
     // https://gmplib.org/manual/Converting-Floats#index-mpf_005fget_005fstr
     os << f.value;
     return os;
+}
+
+namespace std
+{
+    size_t hash<apf>::operator()(const apf& a) const
+    {
+        /* TODO make apf fulfill concept Graphable in graph.h
+            Need functionality to determine the length of the significand/mantissa X
+                -> then use a for loop that loops thru float-sized portions of X
+                -> combine these with bitwise-xor and hope that 64-bit hashes dont clash
+                    e.g hash1 ^ (hash2 << 1) ^ (hash3 << 2)
+        */
+        size_t hash1 = apf::trim(a);
+        return hash1;
+    }
 }

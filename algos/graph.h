@@ -18,7 +18,19 @@ concept Graphable = requires(T t1, T t2)
 template<Graphable N>
 struct Node
 {
-    N entry;
+    virtual Node() = default;
+    virtual ~Node() = default;
+
+    N data;
+};
+
+template<Graphable N>
+struct TraversalNode : Node
+{
+    TraversalNode() = default;
+    ~TraversalNode() = default;
+
+    bool visited;
 };
 
 template<Graphable N, Graphable E>
@@ -28,12 +40,21 @@ struct Edge
     unordered_set<Node<N>> connections;
 };
 
+template<Graphable N>
+struct TraversalEdge: Edge
+{
+    TraversalEdge() = default;
+    ~TraversalEdge() = default;
+
+    bool visited = false;
+};
+
 template<Graphable N, Graphable E> 
-class Graph
+class LinkedGraph
 {
 public:
-    Graph();
-    ~Graph();
+    LinkedGraph();
+    ~LinkedGraph();
     
     Node<N> addNode(const Node<N>& n, bool rebuildGraph = false);
     Node<N> removeNode(const Node<N>& n, bool rebuildGraph = false);
@@ -46,32 +67,12 @@ public:
 
     void buildGraph();
 
+    unordered_set<Edge<N,E>> getConnections(const Node<N>& n);
+
 private:
     unordered_set<Node<N>>* nodes;
     unordered_set<Edge<N,E>>* edges;
-    unordered_map<Node<N>, Edge<N,E>>* graph;
-};
-
-template<Graphable N, Graphable E> 
-class PointerGraph
-{
-public:
-    PointerGraph();
-    ~PointerGraph();
-    
-    Node<N>* addNode(Node<N>* n, bool rebuildGraph = false);
-    Node<N>* removeNode(Node<N>* n);
-    Node<N>* getNode(int i);
-
-    Edge<N,E>* addEdge(Edge<N,E>* e, rebuildGraph = false);
-    Edge<N,E> removeEdge(Edge<N,E>* e)
-
-    void buildGraph();
-
-private:
-    unordered_set<Node<N>*>* nodes;
-    unordered_set<Edge<N,E>*>* edges;
-    unordered_map<Node<N>*, Edge<N,E>*>* graph;
+    unordered_map<Node<N>, unordered_set<Edge<N,E>>>* graph;
 };
 
 #endif
