@@ -11,6 +11,7 @@
 #include <gmpxx.h>
 #include <iostream>
 #include <cmath>
+#include <functional>
 
 class apf
 {
@@ -19,6 +20,9 @@ class apf
     static int getPrecision();
     static void setprecision(const int& p);
     static apf zerodiv();
+
+    static size_t hashMax;
+    static size_t hashDelta;
     
     mpf_t value;
 

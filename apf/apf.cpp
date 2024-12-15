@@ -1,6 +1,8 @@
 #include "apf.h"
 
 int apf::precision = 1000;
+size_t apf::hashMax = 200;
+size_t apf::hashDelta = 20;
 
 int apf::getPrecision()
 {
@@ -346,13 +348,25 @@ namespace std
 {
     size_t hash<apf>::operator()(const apf& a) const
     {
-        /* TODO make apf fulfill concept Graphable in graph.h
-            Need functionality to determine the length of the significand/mantissa X
-                -> then use a for loop that loops thru float-sized portions of X
-                -> combine these with bitwise-xor and hope that 64-bit hashes dont clash
-                    e.g hash1 ^ (hash2 << 1) ^ (hash3 << 2)
-        */
-        size_t hash1 = apf::trim(a);
-        return hash1;
+        hash<double> dhash;
+        size_t _hash = dhash(apf::trim(a));
+
+        char* astr;
+        mp_exp_t* exp = new mp_exp_t(1);
+
+        //  char * mpf_get_str (char *str, mp_exp_t *expptr, int base, size_t n_digits, const mpf_t op)
+        // https://gmplib.org/manual/Converting-Floats#index-mpf_005fget_005fstr
+        mpf_get_str(astr, exp, 10, apf::hashMax, a.value);
+
+        std::string prehash = astr;
+        size_t n = prehash.length();
+        for(size_t i = 0; i < n; i += apf::hashDelta)
+        {
+            string hashStep = prehash.substr(n - i, apf::hashDelta);
+            hash<string> strhash;
+            _hash = _hash ^ (strhash(hashStep) << 1);
+        }
+
+        return _hash;
     }
 }
