@@ -358,8 +358,13 @@ namespace std
         // https://gmplib.org/manual/Converting-Floats#index-mpf_005fget_005fstr
         mpf_get_str(astr, exp, 10, apf::hashMax, a.value);
 
-        std::string prehash = astr;
+        string prehash = astr;
         size_t n = prehash.length();
+        if(n < apf::hashDelta)
+        { 
+            return _hash;
+        }
+
         for(size_t i = 0; i < n; i += apf::hashDelta)
         {
             string hashStep = prehash.substr(n - i, apf::hashDelta);
